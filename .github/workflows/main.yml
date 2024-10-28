@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+  schedule:
+    # every month first day
+    - cron: '0 0 1 * *'
+
   workflow_dispatch:
 
 
@@ -34,7 +38,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ghcr.io/${{ github.repository }}
@@ -43,6 +47,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=schedule,pattern={{date 'YYYYMMDD'}}
             type=raw,value=standard-${{ github.run_id }}
+            type=raw,value=${{ github.run_id }}
             type=raw,value=latest
             type=raw,value=standard
 
@@ -76,7 +81,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ghcr.io/${{ github.repository }}
