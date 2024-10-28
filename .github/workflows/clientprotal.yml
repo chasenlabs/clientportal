@@ -1,4 +1,4 @@
-name: build
+name: clientprotal
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-standard
+      group: ${{ github.workflow }}-${{ github.ref }}-clientprotal-standard
       cancel-in-progress: true
 
     steps:
@@ -54,8 +54,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./clientportal
+          file: ./clientportal/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: |
@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-beta
+      group: ${{ github.workflow }}-${{ github.ref }}-clientprotal-beta
       cancel-in-progress: true
 
     steps:
@@ -96,8 +96,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./clientportal
+          file: ./clientportal/Dockerfile
           push: true
           build-args: |
             FILE=/clientportal.beta.gw.zip
