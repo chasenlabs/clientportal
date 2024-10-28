@@ -18,17 +18,17 @@ Download the latest version of the gateway from the [IBKR Client Portal API Gate
 
 ```shell
 docker run --rm -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest # standard
-docker run --rm -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest-beat # beat
+docker run --rm -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest-beta # beat
 ```
 
 - persistent container
 
 ```shell
 docker run -d --name clientportal -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest # standard
-docker run -d --name clientportal -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest-beat # beat
+docker run -d --name clientportal -p 5000:5000 ghcr.io/chasenlabs/clientportal:latest-beta # beat
 ```
 
-open your browser and go to: [http://localhost:5000/](http://localhost:5000/), if running other computer replace `localhost` with the IP address of the computer running the gateway.
+open your browser and go to: [https://localhost:5000/](http://localhost:5000/), if running other computer replace `localhost` with the IP address of the computer running the gateway.
 
 - get config file from container
 

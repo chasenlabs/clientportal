@@ -62,11 +62,11 @@ jobs:
             org.opencontainers.image.source=github.com/${{ github.repository }}
 
 
-  beat:
+  beta:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-beat
+      group: ${{ github.workflow }}-${{ github.ref }}-beta
       cancel-in-progress: true
 
     steps:
@@ -86,12 +86,12 @@ jobs:
           images: |
             ghcr.io/${{ github.repository }}
           tags: |
-            type=semver,pattern=beat-{{version}}
-            type=semver,pattern=beat-{{major}}.{{minor}}
-            type=schedule,pattern=beat-{{date 'YYYYMMDD'}}
-            type=raw,value=beat-${{ github.run_id }}
-            type=raw,value=latest-beat
-            type=raw,value=beat
+            type=semver,pattern=beta-{{version}}
+            type=semver,pattern=beta-{{major}}.{{minor}}
+            type=schedule,pattern=beta-{{date 'YYYYMMDD'}}
+            type=raw,value=beta-${{ github.run_id }}
+            type=raw,value=latest-beta
+            type=raw,value=beta
 
       - name: Build and push
         uses: docker/build-push-action@v4
