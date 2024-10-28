@@ -100,7 +100,7 @@ jobs:
           file: ./Dockerfile
           push: true
           build-args: |
-            FILE=clientportal.beta.gw.zip
+            FILE=/clientportal.beta.gw.zip
           tags: ${{ steps.meta.outputs.tags }}
           labels: |
             org.opencontainers.image.source=github.com/${{ github.repository }}
